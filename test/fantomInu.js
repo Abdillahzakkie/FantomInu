@@ -9,8 +9,8 @@ describe("FantomInu", () => {
 	beforeEach(async () => {
 		[deployer, marketingWallet, user1, user2, user3] =
 			await ethers.getSigners();
-		const REFLECT = await ethers.getContractFactory("FantomInu");
-		this.reflect = await REFLECT.deploy(marketingWallet.address);
+		const FantomInu = await ethers.getContractFactory("FantomInu");
+		this.reflect = await FantomInu.deploy(marketingWallet.address);
 	});
 
 	describe("deployment", () => {
