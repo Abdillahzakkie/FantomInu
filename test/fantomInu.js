@@ -4,12 +4,12 @@ const { expect } = require("chai");
 const toWei = (_amount) => ethers.utils.parseEther(_amount.toString());
 const fromWei = (_amount) => ethers.utils.formatEther(_amount.toString());
 
-describe("REFLECT", () => {
+describe("FantomInu", () => {
 	let deployer, marketingWallet, user1, user2, user3;
 	beforeEach(async () => {
 		[deployer, marketingWallet, user1, user2, user3] =
 			await ethers.getSigners();
-		const REFLECT = await ethers.getContractFactory("REFLECT");
+		const REFLECT = await ethers.getContractFactory("FantomInu");
 		this.reflect = await REFLECT.deploy(marketingWallet.address);
 	});
 
@@ -30,9 +30,9 @@ describe("REFLECT", () => {
 					this.reflect,
 					[deployer, user1, marketingWallet],
 					[
-						"-950004750023750118751",
-						"950004750023750118750",
-						"25000125000625003125",
+						"-950000047500002375001",
+						"950000047500002375000",
+						"25000001250000062500",
 					]
 				);
 			});
@@ -55,9 +55,9 @@ describe("REFLECT", () => {
 					this.reflect,
 					[user1, user2, marketingWallet],
 					[
-						"-999957493374218665928",
+						"-999999574999337499219",
 						"950000000000000000000",
-						"25001375200023127469",
+						"25000013750020000023",
 					]
 				);
 			});
@@ -72,7 +72,7 @@ describe("REFLECT", () => {
 				await this.reflect.connect(deployer).excludeAccount(user1.address);
 			});
 
-			it("should transfer token properly", async () => {
+			it("should _transferFromExcluded token properly", async () => {
 				const _amount = 1000;
 				await expect(() =>
 					this.reflect.connect(user1).transfer(user2.address, toWei(_amount))
@@ -81,8 +81,8 @@ describe("REFLECT", () => {
 					[user1, user2, marketingWallet],
 					[
 						"-1000000000000000000000",
-						"950004754064951362791",
-						"25001376239253061157",
+						"950000047500406128698",
+						"25000013750123813627",
 					]
 				);
 			});
@@ -98,7 +98,7 @@ describe("REFLECT", () => {
 				await this.reflect.connect(deployer).excludeAccount(user2.address);
 			});
 
-			it("should transfer token properly", async () => {
+			it("should _transferBothExcluded token properly", async () => {
 				const _amount = 1000;
 				await expect(() =>
 					this.reflect.connect(user1).transfer(user2.address, toWei(_amount))
@@ -108,7 +108,7 @@ describe("REFLECT", () => {
 					[
 						"-1000000000000000000000",
 						"950000000000000000000",
-						"25001376370120120120",
+						"25000013750136876369",
 					]
 				);
 			});

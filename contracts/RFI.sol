@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "hardhat/console.sol";
 
-contract REFLECT is Context, IERC20, Ownable {
+contract FantomInu is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
     address public marketingWallet;
@@ -20,12 +20,12 @@ contract REFLECT is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private constant _tTotal = 10_000_000 ether;
+    uint256 private constant _tTotal = 1_000_000_000 ether;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = 'reflect.finance';
-    string private _symbol = 'RFI';
+    string private _name = "FantomInu";
+    string private _symbol = 'FTM.INU';
     uint8 private _decimals = 18;
 
     constructor(address _marketingWallet) {
